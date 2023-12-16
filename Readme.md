@@ -26,7 +26,7 @@ crashes when an instance of **MDLAsset** is passed as the first parameter.
 <br />
 <br />
 
-Perusing through Apple's "Documentation and API Reference", we notice that an **SCNNode** object has both a *name* (**NSString**) property and *geometry* (**SCNGeometry**) property. We also note that an **SCNScene** object which represents a scene graph describes a 3D scene and encapsulates a hierarchy of nodes (**SCNNodes**). At the top of the graph is the *rootNode*. All the scene's content is organised as a node hierarchy under this node. Our interest is on the class **SCNNode**. Objects of this class which has an instance of **SCNGeometry** as a property. We learnt in the previous demo, such objects can be used to create **MDLMesh** objects which in turn can be used to instantiate a **GLKMesh** object.
+Perusing through Apple's "Documentation and API Reference", we notice that an **SCNNode** object has both a *name* (**NSString**) property and *geometry* (**SCNGeometry**) property. We also note that an **SCNScene** object which represents a scene graph describes a 3D scene and encapsulates a hierarchy of nodes (**SCNNodes**). At the top of the graph is the *rootNode*. All the scene's content is organised as a node hierarchy under this node. Our interest is on the class **SCNNode**. Objects of this class which an instance of **SCNGeometry** as a property. We learnt in the previous demo, such objects can be used to create **MDLMesh** objects which in turn can be used to instantiate a **GLKMesh** object.
 
 ```objective-C
 
@@ -41,14 +41,10 @@ Perusing through Apple's "Documentation and API Reference", we notice that an **
 where error is an instance of **NSError**.
 
 <br />
-<br />
 
 Apple's SceneKit framework supports the import of scene source files of types .dae, .abc and .scn. And it can also create an **SCNScene** object from an **MDLAsset** object using the **SCNScene** class method *sceneWithMDLAsset:*. In other words, we could create an instance of **MDLAsset**.
 
 ```objective-C
-
-<br />
-<br />
 
     MDLAsset *asset = [[MDLAsset alloc] initWithURL:url
                                    vertexDescriptor:nil     
@@ -57,11 +53,9 @@ Apple's SceneKit framework supports the import of scene source files of types .d
 ```
 
 <br />
-<br />
 
 then create an **SCNScene** object
 
-<br />
 <br />
 
 ```objective-C
@@ -69,14 +63,12 @@ then create an **SCNScene** object
     SCNScene *scene = [SCNScene sceneWithMDLAsset:asset];
 
 ```
-
-<br />
 <br />
 
 We can use the *rootNode* property to extract the childNode(s) which are **SCNNodes**. In the case of a simple .OBJ file, SceneKit will build a tree with only 1 child node. So, the process of extracting this single child node is straightforward.
 
 Calling the following method with the **SCNNode** object's geometry (**SCNGeometry**) property will create an **MDLMesh** instance which can be passed as a parameter to the method:
-<br />
+
 <br />
 
 ```objective-C
@@ -85,7 +77,7 @@ Calling the following method with the **SCNNode** object's geometry (**SCNGeomet
                                     bufferAllocator:allocator];
 
 ```
-<br />
+
 <br />
 
 It is necessary to investigate the properties of the newly-created **GLKMesh** object and those of its associated class objects further before using it in another demo. Briefly, instead of a single vertex buffer, the system has allocated 3 vertex buffers. There is still a single index buffer. The system, as usual, allocates OpenGL Vertex Buffer and Index Buffer objects (VBOs and EBOs) which are accessed as *glBufferName* properties. And the Model class has to be updated to handle multiple VBOs and EBOs.

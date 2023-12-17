@@ -109,6 +109,7 @@ Rendering the skybox is straighforward because Modern GPU hardware supports cube
 <br />
 <br />
 
+![](Documentation/Output.png)
 
 Compiled and run under XCode 8.3.2
 <br />

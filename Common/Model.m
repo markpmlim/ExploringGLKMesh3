@@ -80,6 +80,8 @@
     return self;
 }
 
+///// We assume the vertices of the loaded model have position, normal and texture coordinate attributes.
+
 /*
  It is mandatory for an .OBJ file have the position attribute
  for each vertex of its mesh. If the normal and uv coord attributes

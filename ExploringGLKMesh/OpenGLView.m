@@ -188,6 +188,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink,
     glUseProgram(0);
 }
 
+// We assume the vertices of the loaded model have position, normal and texture coordinate attributes.
 - (void)loadModel
 {
     NSBundle *mainBndl = [NSBundle mainBundle];
